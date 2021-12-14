@@ -1,5 +1,5 @@
 import type {NextPage} from 'next'
-import Container from "@mui/material/container";
+import Container from '@mui/material/Container';
 import Toolbar from "@mui/material/Toolbar";
 import Typography from '@mui/material/Typography';
 import React from "react";
