@@ -1,7 +1,3 @@
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import React from "react";
 import {signOut, useSession} from "next-auth/react";
 import Avatar from '@mui/material/Avatar';
@@ -9,24 +5,8 @@ import IconButton from "@mui/material/IconButton";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
-const border = "1px solid rgb(239, 243, 244)"
-
-const Layout: React.FC = ({children}) => {
-    return (
-        <Container maxWidth="sm">
-            <Box borderLeft={border} borderRight={border} height="100vh">
-                <Toolbar sx={{borderBottom: border}}>
-                    <Typography component="h1" variant="h6" noWrap sx={{flex: 1}}>HackaTHEOn</Typography>
-                    <User/>
-                </Toolbar>
-                {children}
-            </Box>
-        </Container>
-    )
-}
-
 const User: React.FC = () => {
-    const {data: session} = useSession({required: true})
+    const {data: session} = useSession()
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
     if (!session) return null
     const open = Boolean(anchorEl)
@@ -53,4 +33,4 @@ const User: React.FC = () => {
     )
 }
 
-export default Layout
+export default User
