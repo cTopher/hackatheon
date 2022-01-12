@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {CacheProvider, EmotionCache} from '@emotion/react';
 import theme from '../styles/theme';
 import createEmotionCache from '../utils/createEmotionCache';
+import {SessionProvider} from "next-auth/react"
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -14,7 +15,7 @@ interface MyAppProps extends AppProps {
 }
 
 export default function MyApp(props: MyAppProps) {
-    const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
+    const {Component, emotionCache = clientSideEmotionCache, pageProps: {session, ...pageProps}} = props
     return (
         <CacheProvider value={emotionCache}>
             <Head>
@@ -23,7 +24,9 @@ export default function MyApp(props: MyAppProps) {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
-                <Component {...pageProps} />
+                <SessionProvider session={session}>
+                    <Component {...pageProps} />
+                </SessionProvider>
             </ThemeProvider>
         </CacheProvider>
     );
