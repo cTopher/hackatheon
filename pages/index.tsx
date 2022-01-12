@@ -6,16 +6,10 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import {useSession} from "next-auth/react";
 import Container from "@mui/material/Container";
-import useSWR, {useSWRConfig} from 'swr'
-import {fetcher, post} from '../libs/fetch'
-import {Vote} from "../src/vote"
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
-import User from "../components/user";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import Button from "@mui/material/Button";
+import User from "../components/User";
 import CircularProgress from "@mui/material/CircularProgress";
+import Fav from "../components/Fav";
 
 const border = "1px solid rgb(239, 243, 244)"
 
@@ -77,12 +71,7 @@ const Tweets: React.FC = () => {
 
 type TweetProps = { id: string, name: string, content: string, avatar: string, img?: string };
 const Tweet: React.FC<TweetProps> = ({id, name, content, avatar, img}) => {
-    let {data} = useVotes()
-    let vote = useVote(id)
-    let deleteVote = useDeleteVote(id)
-    if (!data) return null
-    const voteNb = 1 + data.findIndex(v => v.tweetId === id)
-    const canVote = data.length < 3
+
     return (
         <Box p={2} borderBottom={border}>
             <Box display="flex">
@@ -94,38 +83,11 @@ const Tweet: React.FC<TweetProps> = ({id, name, content, avatar, img}) => {
                 </Box>
             </Box>
             <Box display="flex" mt={1} justifyContent="flex-end">
-                {voteNb ? (
-                    <Button startIcon={<FavoriteIcon/>} onClick={() => deleteVote()}>
-                        {voteNb}
-                    </Button>
-                ) : (
-                    <IconButton onClick={() => vote()} disabled={!canVote}>
-                        <FavoriteBorderIcon/>
-                    </IconButton>
-                )}
+                <Fav tweetId={id}/>
             </Box>
         </Box>
     )
 }
 
-function useVotes() {
-    return useSWR<Vote[]>('/api/votes', fetcher)
-}
-
-function useVote(tweetId: string) {
-    const {mutate} = useSWRConfig()
-    return async () => {
-        await post(`/api/vote`, tweetId)
-        await mutate('/api/votes')
-    }
-}
-
-function useDeleteVote(tweetId: string) {
-    const {mutate} = useSWRConfig()
-    return async () => {
-        await post(`/api/delete-vote`, tweetId)
-        await mutate('/api/votes')
-    }
-}
 
 export default Home
