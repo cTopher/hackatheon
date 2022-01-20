@@ -16,23 +16,21 @@ const border = "1px solid #dddddd"
 const Home: NextPage = () => {
     const {data: session} = useSession({required: true})
     return (
-        <Container maxWidth="sm">
-            <Box borderLeft={border} borderRight={border}>
-                <Toolbar sx={{borderBottom: border}}>
-                    <Box sx={{flex: 1}}>
-                        <Typography component="h1" variant="h6" noWrap>HackaTHEOn</Typography>
-                        <Typography variant="caption">Vote for your three favourite projects</Typography>
-                    </Box>
-                    <User/>
-                </Toolbar>
-                {session ? (
-                    <Tweets/>
-                ) : (
-                    <Box display="flex" width="100%" justifyContent="center" p={4}>
-                        <CircularProgress/>
-                    </Box>
-                )}
-            </Box>
+        <Container maxWidth="sm" sx={{borderLeft: border, borderRight: border}} disableGutters>
+            <Toolbar sx={{borderBottom: border}}>
+                <Box sx={{flex: 1}}>
+                    <Typography component="h1" variant="h6" noWrap>HackaTHEOn</Typography>
+                    <Typography variant="caption">Vote for your three favourite projects</Typography>
+                </Box>
+                <User/>
+            </Toolbar>
+            {session ? (
+                <Tweets/>
+            ) : (
+                <Box display="flex" width="100%" justifyContent="center" p={4}>
+                    <CircularProgress/>
+                </Box>
+            )}
         </Container>
     )
 }
@@ -142,6 +140,19 @@ const Tweets: React.FC = () => {
                     just-in-time everything (except the video player) solution
                 </a>. Join a strong team with a clear green vision.
             </Tweet>
+            <Tweet
+                id="touch"
+                name="Maxim"
+                avatar="/maxim.png"
+                img="/drake.jpeg"
+            >
+                Imagine you&apos;re watching a video using THEO on mobile. Oops! Just missed the punchline of a long
+                joke. Let&apos;s seek back about 10 seconds ... by using thumbs that are half the size of the screen.
+                OR. Let&apos;s double tap the left side of the player to rewind 10 seconds! 20 seconds you say? TRIPLE
+                TAP. 30? QUAD- you get the point. Introducing the new and improved THEOplayer v3 UX, including double
+                tap seek, but potentially also: vertical volume/brightness drag, scaling settings/subs menu, ... In
+                other words: the best of every (commercial) video player.
+            </Tweet>
 
         </>
     )
@@ -158,8 +169,8 @@ const Tweet: React.FC<TweetProps> = ({id, name, avatar, img, children}) => {
                     <Typography fontWeight={700}>{name}</Typography>
                     <Typography gutterBottom>{children}</Typography>
                     {img && (
-                        <Box ml={2} mt={2}>
-                            <Image src={img} height={250} width={400} alt={name}/>
+                        <Box mt={2} display="flex" justifyContent="center">
+                            <Image src={img} height={250} width={380} alt={name}/>
                         </Box>
                     )}
                 </Box>
