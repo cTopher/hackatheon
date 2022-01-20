@@ -9,6 +9,7 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import User from "../components/User";
 import Fav from "../components/Fav";
+import Stats from "../components/Stats";
 
 const border = "1px solid #dddddd"
 
@@ -153,7 +154,6 @@ const Tweets: React.FC = () => {
 
 type TweetProps = { id: string, name: string, avatar: string, img?: string };
 const Tweet: React.FC<TweetProps> = ({id, name, avatar, img, children}) => {
-
     return (
         <Box p={2} borderBottom={border}>
             <Box display="flex">
@@ -171,6 +171,7 @@ const Tweet: React.FC<TweetProps> = ({id, name, avatar, img, children}) => {
             <Box display="flex" mt={1} justifyContent="flex-end">
                 <Fav tweetId={id}/>
             </Box>
+            <Stats tweetId={id}/>
         </Box>
     )
 }
