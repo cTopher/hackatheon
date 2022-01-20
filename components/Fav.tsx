@@ -31,7 +31,7 @@ const Fav: React.FC<{ tweetId: string }> = ({tweetId}) => {
         }
     }, [data])
 
-    const index = (data ?? []).findIndex(v => v.tweetId === tweetId)
+    const index = (data || []).findIndex(v => v.tweetId === tweetId)
     if (loading || index >= 0) {
         return (
             <LoadingButton loading={loading} startIcon={<FavoriteIcon/>} onClick={handleDeleteVote}>

@@ -8,13 +8,12 @@ import {useSession} from "next-auth/react";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import User from "../components/User";
-import CircularProgress from "@mui/material/CircularProgress";
 import Fav from "../components/Fav";
 
 const border = "1px solid #dddddd"
 
 const Home: NextPage = () => {
-    const {data: session} = useSession({required: true})
+    useSession({required: true})
     return (
         <Container maxWidth="sm" sx={{borderLeft: border, borderRight: border}} disableGutters>
             <Toolbar sx={{borderBottom: border}}>
@@ -24,13 +23,7 @@ const Home: NextPage = () => {
                 </Box>
                 <User/>
             </Toolbar>
-            {session ? (
-                <Tweets/>
-            ) : (
-                <Box display="flex" width="100%" justifyContent="center" p={4}>
-                    <CircularProgress/>
-                </Box>
-            )}
+            <Tweets/>
         </Container>
     )
 }
