@@ -1,6 +1,3 @@
-import useSWR from "swr";
-import {Vote} from "../src/vote";
-import {fetcher,} from "../libs/fetch";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -9,8 +6,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import PersonIcon from '@mui/icons-material/Person';
 
 import React from "react";
-import Dict = NodeJS.Dict;
 import Typography from "@mui/material/Typography";
+import {AllVotes, useAllVotes} from "./AllVotes";
 
 const Stats: React.FC<{ tweetId: string }> = ({tweetId}) => {
     const votes = useAllVotes()
@@ -54,17 +51,5 @@ function takeVotes(votes: AllVotes, tweetId: string, position: number): string[]
         .map(([user,]) => user)
 }
 
-function useAllVotes(): AllVotes {
-    const {data} = useSWR<Vote[]>('/api/all-votes', fetcher)
-    if (!data?.length) return []
-    const voteMap = data.reduce((acc, vote) => {
-        if (!acc[vote.userEmail]) acc[vote.userEmail] = []
-        acc[vote.userEmail]!.push(vote.tweetId)
-        return acc
-    }, {} as Dict<string[]>)
-    return Object.entries(voteMap) as AllVotes
-}
-
-type AllVotes = [string, string[]][]
 
 export default Stats

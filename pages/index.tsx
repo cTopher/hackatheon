@@ -10,22 +10,28 @@ import Toolbar from "@mui/material/Toolbar";
 import User from "../components/User";
 import Fav from "../components/Fav";
 import Stats from "../components/Stats";
+import VotesTable from "../components/AllVotes";
 
 const border = "1px solid #dddddd"
 
 const Home: NextPage = () => {
     useSession({required: true})
     return (
-        <Container maxWidth="sm" sx={{borderLeft: border, borderRight: border}} disableGutters>
-            <Toolbar sx={{borderBottom: border}}>
-                <Box sx={{flex: 1}}>
-                    <Typography component="h1" variant="h6" noWrap>HackaTHEOn</Typography>
-                    <Typography variant="caption">Vote for your three favourite projects</Typography>
-                </Box>
-                <User/>
-            </Toolbar>
-            <Tweets/>
-        </Container>
+        <>
+            <Container maxWidth="sm" sx={{borderLeft: border, borderRight: border}} disableGutters>
+                <Toolbar sx={{borderBottom: border}}>
+                    <Box sx={{flex: 1}}>
+                        <Typography component="h1" variant="h6" noWrap>HackaTHEOn</Typography>
+                        <Typography variant="caption">Vote for your three favourite projects</Typography>
+                    </Box>
+                    <User/>
+                </Toolbar>
+                <Tweets/>
+            </Container>
+            <Container maxWidth="lg">
+                <VotesTable/>
+            </Container>
+        </>
     )
 }
 
