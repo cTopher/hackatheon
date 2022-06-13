@@ -12,4 +12,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 }
 
-const ADMINS = ["christopher.leyssen@theoplayer.com", "negar.hajihoseini@theoplayer.com"]
+const ADMINS = [
+    "christopher.leyssen@theoplayer.com",
+    "egon.okerman@theoplayer.com",
+    "pieter-jan.speelmans@theoplayer.com",
+    "onur.akdemir@theoplayer.com"
+]
