@@ -2,6 +2,8 @@ import * as firebaseAdmin from 'firebase-admin'
 
 import {Vote} from "../src/vote";
 
+const VOTES_TABLE = 'votesJune2022';
+
 if (!firebaseAdmin.apps.length) {
     firebaseAdmin.initializeApp({
         credential: firebaseAdmin.credential.cert({
@@ -16,28 +18,28 @@ if (!firebaseAdmin.apps.length) {
 const database = firebaseAdmin.database()
 
 export async function getAllVotes(): Promise<Vote[]> {
-    const snapshot = await database.ref('votes').once('value')
+    const snapshot = await database.ref(VOTES_TABLE).once('value')
     return Object.values(snapshot.val() ?? {})
 }
 
 export async function getVotesFor(userEmail: string): Promise<Vote[]> {
-    const snapshot = await database.ref('votes').orderByChild('userEmail').equalTo(userEmail).once('value')
+    const snapshot = await database.ref(VOTES_TABLE).orderByChild('userEmail').equalTo(userEmail).once('value')
     return Object.values(snapshot.val() ?? {})
 }
 
 export async function vote(vote: Vote) {
     const votes = await getVotesFor(vote.userEmail)
     if (votes.length < 3 && !votes.find(v => v.tweetId === vote.tweetId)) {
-        await database.ref('votes').push(vote)
+        await database.ref(VOTES_TABLE).push(vote)
     }
 }
 
 export async function deleteVote(vote: Vote) {
-    await database.ref('votes').orderByChild('userEmail').equalTo(vote.userEmail).once('value', snapshot => {
+    await database.ref(VOTES_TABLE).orderByChild('userEmail').equalTo(vote.userEmail).once('value', snapshot => {
         snapshot.forEach(child => {
             const val: Vote = child.val()
             if (child.key && val.tweetId === vote.tweetId) {
-                database.ref('votes').child(child.key).remove()
+                database.ref(VOTES_TABLE).child(child.key).remove()
             }
         })
     })
