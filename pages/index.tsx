@@ -50,7 +50,7 @@ const Tweets: React.FC = () => {
             <Tweet id="quality" avatar="/maxim.png" name="Maxim">
                 Quality selection for iOS in THEO UI using preferredPeakBitrate/preferredMaximumResolution
             </Tweet>
-            <Tweet id="blind" name="Furby" avatar="/lieven.jpg">
+            <Tweet id="pi" name="Furby" avatar="/lieven.jpg">
                 Implement an entire HESP encoder and packager stack on a Pi 4B+ or equivalent setup box stack.
             </Tweet>
             <Tweet id="release" name="Daniel" avatar="/daniel.png">
