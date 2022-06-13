@@ -38,122 +38,26 @@ const Home: NextPage = () => {
 const Tweets: React.FC = () => {
     return (
         <>
-            <Tweet
-                id="watch-party"
-                name="Daniel"
-                avatar="/daniel.png"
-            >
-                Zero-cost watch party experience across ALL Apple devices. You&apos;re welcome! 😎
+            <Tweet id="mounts" name="Michel" avatar="M">
+                On NAB we had phone and tablet mounts to secure our devices on the booth. These mounts we took with us back to the office. For test automation purposes I would like to rebuild this set-up so we have a wall with iPad/iPhone&apos;s connected to our test automation system.
             </Tweet>
-            <Tweet
-                id="team-meeting"
-                name="Xzibit"
-                avatar="/pj.png"
-                img="/dawg.jpg"
-            >
-                I heard you like HESP and THEO, so I propose we put HESP in your THEO Team Meetings so you can use HESP
-                while talking about THEO.
+            <Tweet id="auto-deploy" name="Michel" avatar="M">
+                In our test automation system we suffer from smart tv&apos;s going offline after a while, result is un-executed tests during the nightly run. During the hackaton would like to investigate if we can develop a script that auto-deploy and turns-on both TIZEN & WebOS smart tv&apos;s.</Tweet>
+            <Tweet id="record" name="Daniel" avatar="/daniel.png" img="/rec.jpg">
+                What if we could also do recording and push it directly to HESP.live from our phone?
+                I tell you what ... Ultra Low-Latency Youtube/Facebook Live client is just born.
             </Tweet>
-            <Tweet
-                id="stop"
-                name="Patrick"
-                avatar="/patrick.jpg"
-                img="/mercy.jpg"
-            >
-                Stop a customer that is using our player without paying. No money, no mercy. Let&apos;s cut them off.
+            <Tweet id="quality" avatar="/maxim.png" name="Maxim">
+                Quality selection for iOS in THEO UI using preferredPeakBitrate/preferredMaximumResolution
             </Tweet>
-            <Tweet
-                id="record"
-                name="Owl"
-                avatar="/mattias.png"
-                img="/rec.jpg"
-            >
-                Tired of keeping a tab open all day in the hopes of reproducing a tricky bug on a customer&apos;s
-                livestream, only to then realize you forgot to add a console.log() somewhere? 😩 Let&apos;s build
-                a &quot;record and replay tool&quot;: reproduce it once, replay it as many times as you want! 🔁
+            <Tweet id="blind" name="Furby" avatar="/lieven.jpg">
+                Implement an entire HESP encoder and packager stack on a Pi 4B+ or equivalent setup box stack.
             </Tweet>
-            <Tweet
-                id="blockchain"
-                name="Streamoshi Takamoto"
-                avatar="/guarav.png"
-                img="/rocket.png"
-            >
-                Dear HODLers, what if we could be paid to view Ads? What if we could create a cryptocurrency called the
-                THEO token(THT) that helps advertisers and viewers maintain a healthy and win-win balance? Want to pump
-                THT to the moon and buy a Ferrari? Then join the #BlockchainedTHEOplayer
+            <Tweet id="release" name="Daniel" avatar="/daniel.png">
+                One-click release.
+                Being a release master is not fun. Let&apos;s automate the THEOplayerSDK release process, so my mother could do it too.
+                One big physical button, one click and everything is done.
             </Tweet>
-            <Tweet
-                id="babel"
-                name="Furby"
-                avatar="/lieven.jpg"
-                img="/babelfish.jpg"
-            >
-                Blub, blub, I am the babelfish! I provide (real time) voice-to-voice translation of a speaker in a
-                video. Now, this might seem a complex task, but there are in fact already a lot of repositories or
-                (free) online APIs that solve parts of the problem. We just needs to connect them together! For example,
-                the problem could be broken down to the following steps: isolate speaker voice and ambient audio,
-                translate voice audio to text in a desired language, regenerate translated voice audio in the style of
-                the original speaker, then merge the new voice audio with the ambient audio. Finally, make the resulting
-                video a stream so it can be played using THEOplayer (in which case, it becomes a babelgiraffe :p ).
-            </Tweet>
-            <Tweet
-                id="blind"
-                name="Furby"
-                avatar="/lieven.jpg"
-                img="/blind.jpg"
-            >
-                How about making THEOplayer more accessible to vision-impaired people by automatically generating a
-                description of the video. We can start from{' '}
-                <a href="https://github.com/ElisonSherton/Image_Captioning">this git repo</a>. For example, we
-                periodically capture a video frame, generate a description and create a closed caption track. What about
-                the really, really blind people? We also perform{' '}
-                <a href="https://cloud.google.com/text-to-speech">text to speech</a> and create an audio track. Finally,
-                we generate a new stream with these tracks and play it back in THEOplayer.
-            </Tweet>
-            <Tweet
-                id="blade-runner"
-                name="Furby"
-                avatar="/lieven.jpg"
-                img="/blade-runner.png"
-            >
-                Voice based player control, just like in blade runner! You talk to THEOplayer to make it show a specific
-                frame, seek to a time or loop-play a specific section of video. Optionally, we let it zoom in to a
-                specific part of the video/frame. Even better, we perform super resolution on te zoomed region to
-                enhance the image quality. All of these functionalities can be implemented in-browser using{' '}
-                <a href="https://webmachinelearning.github.io/webnn-intro/">WebNN</a>, an upcoming standard for running
-                neural networks straight in the browser.
-            </Tweet>
-            <Tweet
-                id="quortex"
-                name="Bart / Pooria"
-                avatar="/bart.jpg"
-                img="/quortex.jpg"
-            >
-                THEOplayer goes green with Quortex.io - Suppose we make THEOplayer green as part of an E2E OTT
-                ecosystem. THEOplayer would give instructions (network status, type of device, device screen resolution)
-                back to the Quortex.io just-in-time OTT cloud backend which will trigger that backend to only
-                encode/package/deliver in a specific set of resolutions/parameters/... based on the request. This way we
-                reduce datacenter costs of the full OTT ecosystem. Other backend systems run 24/7 continuously while we
-                only run based on a customer stream playback request. For this HackaTHEOn project, we would involve a
-                third party partner to join: Quortex.io from France, who have developed a{' '}
-                <a href="https://www.welcome.quortex.io/our-technology.">
-                    just-in-time everything (except the video player) solution
-                </a>. Join a strong team with a clear green vision.
-            </Tweet>
-            <Tweet
-                id="touch"
-                name="Maxim"
-                avatar="/maxim.png"
-                img="/drake.jpeg"
-            >
-                Imagine you&apos;re watching a video using THEO on mobile. Oops! Just missed the punchline of a long
-                joke. Let&apos;s seek back about 10 seconds ... by using thumbs that are half the size of the screen.
-                OR. Let&apos;s double tap the left side of the player to rewind 10 seconds! 20 seconds you say? TRIPLE
-                TAP. 30? QUAD- you get the point. Introducing the new and improved THEOplayer v3 UX, including double
-                tap seek, but potentially also: vertical volume/brightness drag, scaling settings/subs menu, ... In
-                other words: the best of every (commercial) video player.
-            </Tweet>
-
         </>
     )
 }
