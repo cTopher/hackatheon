@@ -8,7 +8,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import React, {useEffect, useState} from "react";
 
 const Fav: React.FC<{ tweetId: string }> = ({tweetId}) => {
-    const {data} = useVotes()
+    const {data, error} = useVotes()
     const [loading, setLoading] = useState(true)
     const vote = useVote(tweetId)
     const deleteVote = useDeleteVote(tweetId)
@@ -30,6 +30,8 @@ const Fav: React.FC<{ tweetId: string }> = ({tweetId}) => {
             setLoading(false)
         }
     }, [data])
+
+    if (error) return <div>redirecting...</div>
 
     const index = (data || []).findIndex(v => v.tweetId === tweetId)
     if (loading || index >= 0) {
