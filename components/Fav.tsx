@@ -31,7 +31,7 @@ const Fav: React.FC<{ tweetId: string }> = ({tweetId}) => {
         }
     }, [data])
 
-    if (error) return <div>redirecting...</div>
+    if (error) return null
 
     const index = (data || []).findIndex(v => v.tweetId === tweetId)
     if (loading || index >= 0) {
