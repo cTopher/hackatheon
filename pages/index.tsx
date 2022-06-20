@@ -50,11 +50,11 @@ const Tweets: React.FC = () => {
                 client is just born.<br/>
             </Tweet>
             <Tweet id="hevc-hesp" name="Team Ham" avatar="/team-ham.jpg">
-                HESP is the "High Efficiency Streaming Protocol". Let's make it work together with the "High Efficiency Video Codec" and get some h265 in our HESP. Who knows, maybe we'll be able to cross another bridge and go AV1?
+                HESP is the &quot;High Efficiency Streaming Protocol&quot;. Let&apos;s make it work together with the &quot;High Efficiency Video Codec&quot; and get some h265 in our HESP. Who knows, maybe we&apos;ll be able to cross another bridge and go AV1?
             </Tweet>
             <Tweet id="release-button" name="Daniel" avatar="/daniel.png" img="/big-red-button.jpg">
                 Being a release master is not fun.<br/>
-                Let's automate the THEOplayerSDK release process, so my mother could do it too.<br/>
+                Let&apos;s automate the THEOplayerSDK release process, so my mother could do it too.<br/>
                 <br/>
                 One big physical button, one click and everything is done. <br/>
                 (more info later)<br/>
