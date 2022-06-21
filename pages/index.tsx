@@ -77,6 +77,10 @@ const Tweets: React.FC = () => {
             <Tweet id="prerecorded-hesp" name="Michel" avatar="/michel.png">
                 I would like to investigate how we can reduce variations in the video bandwidth, network stability but also reduce the cost/equipment needed to generate a stream. Ideally we would create a function (lambda) that converts a pre-recorded HESP VOD into actual THEOlive.
             </Tweet>
+            <Tweet id="clips" name="Kappa" avatar="/kappa.jpg" img="/clipping.png">
+                Just saw an unforgettable moment during a THEOlive stream? Now you can share it with your friends at the press of a button using THEOlive Clips!<br/>
+                Simply press the &#x1F3AC; button, trim your clip out of the last 30 seconds of the stream, then receive a link to share everywhere!
+            </Tweet>
             <Tweet id="xagget-on-demand" name="Michel" avatar="/michel.png">
                 Adapt Xagget for internal use. Any person enters the stream url, drm parameters and selects platform ... overnight the test runs and you get a result presented back. Ideal for commercial opportunities.
             </Tweet>
